@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Movies - Movie App</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/app.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  </head>
+  <body class="dark" style="scroll-behavior: smooth;">
+    <nav class="nav">
+      <div class="container-nav nav-content">
+        <div class="nav-logo">
+          <a href="index.html"><img src="./navImage/Logo-light.png" alt="logo" /></a>
+        </div>
+        <div class="nav-list">
+          <ul class="nav-links">
+            <li><a href="index.html#home" data-translate="home">Home</a></li>
+            <li><a href="index.html#pricing" data-translate="pricing">Pricing</a></li>
+            <li><a href="all-movies.html" class="active" data-translate="movies">Movies</a></li>
+            <li><a href="index.html#favorites" data-translate="favorites">Favorites</a></li>
+            <li><a href="index.html#actors" data-translate="popularActors">Actors</a></li>
+            <li><a href="index.html#faq" data-translate="faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="nav-btns">
+          <ul class="personal-buttons">
+            <li class="search-container">
+              <button id="navSearch">
+                <img src="./navImage/Vector.png" alt="search" />
+              </button>
+            </li>
+            <li>
+              <select id="langSelector"></select>
+            </li>
+            <li>
+              <div id="userProfile" style="display: flex; align-items: center; gap: 10px;">
+                <span id="userName" style="display: none; font-size: 14px; cursor: pointer;"></span>
+                <button id="navUser">
+                  <img src="./navImage/log in - interaction.png" alt="User Profile" />
+                </button>
+              </div>
+            </li>
+            <li>
+              <button id="themeToggle">
+                <img class="toggleImg" src="./navImage/Union.png" alt="Toggle Theme" />
+              </button>
+            </li>
+            <li class="burger-li">
+              <button id="burgerBtn" class="burger-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="all-movies-page" style="padding-top: 100px;">
+      <section class="section">
+        <h1 data-translate="allMovies" style="margin-bottom: 30px; text-align: center;">All Movies</h1>
+        
+        <div id="genreMovies">
+          <ul class="genre-Movies" style="justify-content: center; margin-bottom: 40px;"></ul>
+        </div>
+
+        <div class="cards" id="allMoviesGrid"></div>
+        
+        <div id="loadingBatches" class="loading-spinner" style="display: none; margin: 40px auto;"></div>
+        
+        <div class="load-more-container" style="text-align: center; margin: 50px 0;">
+          <button id="loadMoreBtn" class="load-more-btn" data-translate="loadMore">Load More (100)</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="./navImage/Logo-light.png" alt="logo" />
+          <p data-translate="footerText">Family-friendly streaming</p>
+        </div>
+      </div>
+    </footer>
+
+    <div id="searchOverlay" class="search-overlay" style="display: none;">
+      <div class="search-overlay-content">
+        <button id="closeSearch" class="close-overlay"><i class="bi bi-x-lg"></i></button>
+        <div class="search-box-large">
+          <i class="bi bi-search"></i>
+          <input type="text" id="overlaySearchInput" placeholder="Search movies, actors..." autocomplete="off">
+        </div>
+        <div id="overlayResults" class="cards search-results-grid"></div>
+        <div id="overlayLoading" class="loading-spinner" style="display: none;"></div>
+      </div>
+    </div>
+
+    <div id="authModal" class="modal" style="display: none;">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div id="authForms">
+          <form id="loginForm">
+            <h2 data-translate="login">Login</h2>
+            <input type="email" id="loginEmail" placeholder="Email" required>
+            <input type="password" id="loginPass" placeholder="Password" required>
+            <button type="submit" data-translate="login">Login</button>
+            <p style="margin-top: 10px;">Don't have an account? <a href="#" id="toRegister">Register</a></p>
+          </form>
+          <form id="registerForm" style="display: none;">
+            <h2 data-translate="register">Register</h2>
+            <input type="text" id="regName" placeholder="Name" required>
+            <input type="email" id="regEmail" placeholder="Email" required>
+            <input type="password" id="regPass" placeholder="Password" required>
+            <button type="submit" data-translate="register">Register</button>
+            <p style="margin-top: 10px;">Already have an account? <a href="#" id="toLogin">Login</a></p>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="./js/all-movies.js"></script>
+  </body>
+</html>

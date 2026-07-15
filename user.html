@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Profile</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/app.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  </head>
+  <body class="dark">
+    <nav class="nav">
+      <div class="container-nav nav-content">
+        <div class="nav-logo">
+          <a href="index.html"><img src="./navImage/Logo-light.png" alt="logo" /></a>
+        </div>
+        <div class="nav-list">
+          <ul class="nav-links">
+            <li><a href="index.html" data-translate="home">Home</a></li>
+            <li><a class="active" href="user.html" data-translate="favorites">Favorites</a></li>
+          </ul>
+        </div>
+        <div class="nav-btns">
+          <ul class="personal-buttons">
+            <li>
+              <select id="langSelector"></select>
+            </li>
+            <li>
+              <button id="themeToggle">
+                <img class="toggleImg" src="./navImage/Union.png" alt="Toggle Theme" />
+              </button>
+            </li>
+            <li class="burger-li">
+              <button id="burgerBtn" class="burger-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="user-page animate-fade-in">
+      <div class="user-header">
+        <i class="bi bi-person-circle user-avatar"></i>
+        <div style="flex: 1;">
+          <h1 id="userDisplayName">User Profile</h1>
+          <p id="userEmailLabel">email@example.com</p>
+          <div style="display: flex; gap: 10px; margin-top: 15px;">
+            <button id="logoutBtn" style="background: transparent; border: 1px solid #ff4d4d; color: #ff4d4d; padding: 5px 15px; border-radius: 5px; cursor: pointer;">Logout</button>
+            <button id="openSettingsBtn" class="select-plan-btn" style="padding: 5px 15px;"><i class="bi bi-pencil-square"></i> Edit Profile</button>
+          </div>
+        </div>
+        <button id="headerSettingsIcon" style="background: none; border: none; color: #aaa; font-size: 24px; cursor: pointer;"><i class="bi bi-gear"></i></button>
+      </div>
+
+      <section class="section">
+        <h3 data-translate="favMovies">Favorite Movies</h3>
+        <div id="favoriteMoviesList" class="cards">
+        </div>
+      </section>
+
+      <section class="section">
+        <h3 data-translate="favActors">Favorite Actors</h3>
+        <div id="favoriteActorsList" class="cards">
+        </div>
+      </section>
+
+      <div id="settingsOverlay" class="search-overlay" style="display: none;">
+        <button id="closeSettings" class="close-overlay"><i class="bi bi-x-lg"></i></button>
+        <div class="search-overlay-content">
+          <div class="settings-card" style="max-width: 800px; width: 100%;">
+            <h3 style="margin-bottom: 30px; text-align: center;"><i class="bi bi-gear"></i> Profile Settings</h3>
+            <div class="settings-group">
+              <div class="settings-item">
+                <label>Avatar</label>
+                <div class="avatar-edit-container">
+                  <img id="settingsAvatarPreview" src="" alt="Avatar" style="display: none; width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 10px;">
+                  <input type="file" id="avatarInput" accept="image/*" style="display: none;">
+                  <button type="button" class="select-plan-btn" onclick="document.getElementById('avatarInput').click()">Choose Photo</button>
+                </div>
+              </div>
+              <div class="input-row">
+                <div class="settings-item" style="flex: 1;">
+                  <label>First Name</label>
+                  <input type="text" id="editFirstName" placeholder="First Name">
+                </div>
+                <div class="settings-item" style="flex: 1;">
+                  <label>Last Name</label>
+                  <input type="text" id="editLastName" placeholder="Last Name">
+                </div>
+              </div>
+              <div class="settings-item">
+                <label>Email</label>
+                <input type="email" id="editEmail" disabled>
+              </div>
+              <div class="settings-item">
+                <label>Age</label>
+                <input type="number" id="editAge" min="1">
+              </div>
+              <button id="saveProfileBtn" class="view-all-btn" style="width: 100%; margin-top: 20px;">Save Changes</button>
+              <p id="saveMessage" style="display: none; color: #2d8cff; text-align: center; margin-top: 10px;">Profile updated successfully!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p data-translate="footerText">Family-friendly streaming</p>
+    </footer>
+
+    <script src="./js/user.js" type="module"></script>
+  </body>
+</html>

@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie App</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/app.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  </head>
+  <body class="dark" style="scroll-behavior: smooth;">
+    <section class="hero" id="home">
+      <nav class="nav">
+        <div class="container-nav nav-content">
+          <div class="nav-logo">
+            <a href="index.html"><img src="./navImage/Logo-light.png" alt="logo" /></a>
+          </div>
+          <div class="nav-list">
+            <ul class="nav-links">
+              <li><a href="#home" data-translate="home">Home</a></li>
+              <li><a href="#pricing" data-translate="pricing">Pricing</a></li>
+              <li><a href="#movies" data-translate="movies">Movies</a></li>
+              <li><a href="#favorites" data-translate="favorites">Favorites</a></li>
+              <li><a href="#actors" data-translate="popularActors">Actors</a></li>
+              <li><a href="#faq" data-translate="faq">FAQ</a></li>
+            </ul>
+          </div>
+          <div class="nav-btns">
+            <ul class="personal-buttons">
+              <li class="search-container">
+                <button id="navSearch">
+                  <img src="./navImage/Vector.png" alt="search" />
+                </button>
+              </li>
+              <li>
+                <select id="langSelector"></select>
+              </li>
+              <li>
+                <div id="userProfile" style="display: flex; align-items: center; gap: 10px;">
+                  <span id="userName" style="display: none; font-size: 14px; cursor: pointer;"></span>
+                  <button id="navUser">
+                    <img src="./navImage/log in - interaction.png" alt="User Profile" />
+                  </button>
+                </div>
+              </li>
+              <li>
+                <button id="themeToggle">
+                  <img class="toggleImg" src="./navImage/Union.png" alt="Toggle Theme" />
+                </button>
+              </li>
+              <li class="burger-li">
+                <button id="burgerBtn" class="burger-btn">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="section-content animate-fade-in">
+        <h2 class="movie-title"></h2>
+        <p class="movie-overview"></p>
+      </div>
+      <div id="heroVideoContainer" style="display: none;">
+        <button id="closeHeroVideo" class="close-video-btn"><i class="bi bi-x-large"></i></button>
+        <div class="video-wrapper"></div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="searchSection" style="display: none;">
+      <h3 data-translate="searchResults">Search Results</h3>
+      <div id="searchLoading" class="loading-spinner" style="display: none;"></div>
+      <div class="cards" id="searchResults"></div>
+      <p id="noResults" style="display: none; text-align: center; margin-top: 20px;">No results found.</p>
+    </section>
+
+    <section class="section reveal">
+      <h3 data-translate="trending">Trending</h3>
+      <div class="carousel-wrapper">
+        <button class="carousel-btn prev-btn"><i class="bi bi-chevron-left"></i></button>
+        <div class="cards" id="cardsTrends"></div>
+        <button class="carousel-btn next-btn"><i class="bi bi-chevron-right"></i></button>
+      </div>
+    </section>
+
+    <section class="section reveal" id="favorites" style="display: none;">
+      <h3 data-translate="favorites">Favorites</h3>
+      <div class="cards" id="favoritesContainer"></div>
+    </section>
+
+    <section class="section reveal" id="actors">
+      <h3 data-translate="popularActors">Popular Actors</h3>
+      <div class="carousel-wrapper">
+        <button class="carousel-btn prev-btn"><i class="bi bi-chevron-left"></i></button>
+        <div class="carousel-container" id="popularActorsContainer"></div>
+        <button class="carousel-btn next-btn"><i class="bi bi-chevron-right"></i></button>
+      </div>
+    </section>
+
+    <section class="section reveal" id="movies">
+      <div id="genreMovies">
+        <h3 data-translate="genres">Genres</h3>
+        <ul class="genre-Movies"></ul>
+      </div>
+      <h3 data-translate="allMovies">Movies</h3>
+      <div class="cards" id="allMovies"></div>
+      <div class="view-all-container">
+        <a href="all-movies.html" class="view-all-btn" data-translate="viewAll">View All Movies</a>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <h3 data-translate="nowPlaying">Now Playing</h3>
+      <div class="carousel-wrapper">
+        <button class="carousel-btn prev-btn"><i class="bi bi-chevron-left"></i></button>
+        <div class="cards" id="now"></div>
+        <button class="carousel-btn next-btn"><i class="bi bi-chevron-right"></i></button>
+      </div>
+    </section>
+
+    <section class="section reveal" id="pricing">
+      <h3 style="text-align: center; margin-bottom: 40px;" data-translate="pricing">Pricing</h3>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="price-header">
+            <h4 data-translate="basic">Basic</h4>
+            <div class="price">$9.99<span>/mo</span></div>
+          </div>
+          <ul class="price-features">
+            <li data-translate="pricingDesc1">Standard definition, 1 device</li>
+            <li>720p Resolution</li>
+            <li>Unlimited Movies</li>
+          </ul>
+          <button class="select-plan-btn" data-translate="selectPlan">Select Plan</button>
+        </div>
+        <div class="pricing-card featured">
+          <div class="price-header">
+            <h4 data-translate="suggested">Suggested</h4>
+            <div class="price">$15.99<span>/mo</span></div>
+          </div>
+          <ul class="price-features">
+            <li data-translate="pricingDesc2">Full HD, 2 devices, No ads</li>
+            <li>1080p Resolution</li>
+            <li>Offline viewing</li>
+          </ul>
+          <button class="select-plan-btn" data-translate="selectPlan">Select Plan</button>
+        </div>
+        <div class="pricing-card">
+          <div class="price-header">
+            <h4 data-translate="premium">Premium</h4>
+            <div class="price">$19.99<span>/mo</span></div>
+          </div>
+          <ul class="price-features">
+            <li data-translate="pricingDesc3">Ultra HD 4K, 4 devices, All features</li>
+            <li>4K + HDR Resolution</li>
+            <li>Spatial Audio</li>
+          </ul>
+          <button class="select-plan-btn" data-translate="selectPlan">Select Plan</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="faq">
+      <h3 style="text-align: center; margin-bottom: 40px;" data-translate="faq">FAQ</h3>
+      <div class="faq-container">
+        <div class="faq-item">
+          <div class="faq-question" data-translate="faqQ1">Can I cancel my subscription? <i class="bi bi-plus-lg"></i></div>
+          <div class="faq-answer"><p data-translate="faqA1">Yes, you can cancel at any time from your profile settings.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" data-translate="faqQ2">What devices are supported? <i class="bi bi-plus-lg"></i></div>
+          <div class="faq-answer"><p data-translate="faqA2">We support Smart TVs, smartphones, tablets, and gaming consoles.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer reveal">
+      <div class="newsletter-container">
+        <h3 data-translate="newsletterTitle">Subscribe to our Newsletter</h3>
+        <form id="newsletterForm" class="newsletter-form">
+          <input type="email" id="newsEmail" placeholder="Email" required>
+          <button type="submit" data-translate="newsletterBtn">Subscribe</button>
+        </form>
+        <p id="newsletterMsg" style="display: none; color: #2d8cff; margin-top: 10px;" data-translate="newsletterSuccess">Thank you for subscribing!</p>
+      </div>
+      <p style="margin-top: 40px;" data-translate="footerText">Family-friendly streaming</p>
+    </footer>
+
+    <div id="searchOverlay" class="search-overlay" style="display: none;">
+      <button id="closeSearch" class="close-overlay"><i class="bi bi-x-lg"></i></button>
+      <div class="search-overlay-content">
+        <div class="search-box-large">
+          <i class="bi bi-search"></i>
+          <input type="text" id="overlaySearchInput" placeholder="Search movies, actors..." autocomplete="off">
+        </div>
+        <div id="overlayResults" class="cards search-results-grid"></div>
+        <div id="overlayLoading" class="loading-spinner" style="display: none;"></div>
+        <p id="overlayNoResults" style="display: none; text-align: center; margin-top: 20px; color: #fff;">No results found.</p>
+      </div>
+    </div>
+
+    <div id="videoModal" class="modal video-modal" style="display: none;">
+      <div class="modal-content video-content">
+        <span class="close video-close">&times;</span>
+        <div class="video-container">
+          <iframe id="trailerFrame" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div> 
+
+    <div id="authModal" class="modal" style="display: none;">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div id="authForms">
+          <form id="loginForm">
+            <h2 data-translate="login">Login</h2>
+            <input type="email" id="loginEmail" placeholder="Email" required>
+            <input type="password" id="loginPass" placeholder="Password" required>
+            <button type="submit" data-translate="login">Login</button>
+            <p style="margin-top: 10px;">Don't have an account? <a href="#" id="toRegister">Register</a></p>
+          </form>
+          <form id="registerForm" style="display: none;">
+            <h2 data-translate="register">Register</h2>
+            <div style="display: flex; gap: 10px;">
+              <input type="text" id="regFirstName" placeholder="First Name" required>
+              <input type="text" id="regLastName" placeholder="Last Name" required>
+            </div>
+            <input type="email" id="regEmail" placeholder="Email" required>
+            <input type="password" id="regPass" placeholder="Password" required>
+            <input type="number" id="regAge" placeholder="Age" required min="1">
+            <button type="submit" data-translate="register">Register</button>
+            <p style="margin-top: 10px;">Already have an account? <a href="#" id="toLogin">Login</a></p>
+          </form>
+        </div>
+      </div>
+    </div> 
+
+    <script src="./js/script.js" type="module"></script>
+  </body>
+</html>
